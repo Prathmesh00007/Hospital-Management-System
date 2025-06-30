@@ -73,13 +73,13 @@ The repository is organized into two main folders:
 
 ## 🚀 Getting Started
 
-### Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) v14+  
 - npm v6+ or Yarn v1+  
 - (Optional) A running database instance (MongoDB, PostgreSQL, etc.)  
 
-### Installation
+## Installation
 
 1. **Clone the repo**  
    ```bash
@@ -101,8 +101,8 @@ Create a .env file in the backend/ folder and define:
 dotenv
 PORT=4000
 NODE_ENV=development
-# DB_URI=mongodb://localhost:27017/hospital
-# JWT_SECRET=yourStrong(!)SecretKey
+#DB_URI=mongodb://localhost:27017/hospital
+#JWT_SECRET=yourStrong(!)SecretKey
 Uncomment and configure DB_URI and JWT_SECRET if you integrate a database and authentication.
 
 Running the App
