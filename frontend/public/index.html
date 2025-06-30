@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Hospital Locator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Change the id to 'map' -->
+    <div id="root" style="height: 500px;"></div>
+
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        function fetchNearbyHospitals(lat, lon) {
+            const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=hospital&lat=${lat}&lon=${lon}&radius=5000&amenity=hospital`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(hospital => {
+                        L.marker([hospital.lat, hospital.lon])
+                            .addTo(map)
+                            .bindPopup(`<b>${hospital.display_name}</b><br>${hospital.address ? hospital.address : "No address available"}`);
+                    });
+                })
+                .catch(error => console.error('Error fetching hospital data:', error));
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLat = position.coords.latitude;
+                var userLon = position.coords.longitude;
+                map.setView([userLat, userLon], 13);
+                fetchNearbyHospitals(userLat, userLon);
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>
