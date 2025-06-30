@@ -109,15 +109,15 @@ Running the App
 In two separate shells:
 
 bash
-# 1) Start backend server
+1) Start backend server
 cd backend
 npm start
-# ⇒ Listening on http://localhost:4000
+⇒ Listening on http://localhost:4000
 
-# 2) Serve frontend (hot-reload)
+2) Serve frontend (hot-reload)
 cd ../frontend
 npm run dev
-# ⇒ Opens http://localhost:3000
+⇒ Opens http://localhost:3000
 Navigate to http://localhost:3000 to access the admin dashboard.
 
 📑 API Reference
