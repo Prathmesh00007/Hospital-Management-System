@@ -125,25 +125,45 @@ All endpoints are prefixed with /api. Responses use standard HTTP codes and JSON
 
 Patients
 Method	Endpoint	Description
+
 GET	/api/patients	List all patients
+
 GET	/api/patients/:id	Get a single patient
+
 POST	/api/patients	Create new patient record
+
 PUT	/api/patients/:id	Update existing patient
+
 DELETE	/api/patients/:id	Remove patient (soft delete)
+
 Doctors
+
 Method	Endpoint	Description
+
 GET	/api/doctors	List all doctors
+
 GET	/api/doctors/:id	Doctor by ID
+
 POST	/api/doctors	Add a new doctor profile
+
 PUT	/api/doctors/:id	Update doctor details
+
 DELETE	/api/doctors/:id	Remove doctor
+
 Appointments
+
 Method	Endpoint	Description
+
 GET	/api/appointments	List all appointments
+
 GET	/api/appointments/:id	Get appointment by ID
+
 POST	/api/appointments	Schedule a new appointment (patient + doctor)
+
 PUT	/api/appointments/:id	Reschedule or update appointment
+
 DELETE	/api/appointments/:id	Cancel appointment
+
 > Note: All POST/PUT endpoints expect JSON bodies. Example for creating an appointment: > json > { > "patientId": "603d9a1f9c1e4e3b28fa5d2e", > "doctorId": "605bff2a4f1a2a5d3c8b1e0c", > "datetime": "2025-10-12T14:30:00Z" > } >
 
 🖥 Frontend Structure
